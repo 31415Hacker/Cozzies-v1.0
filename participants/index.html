@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weekly Quiz</title>
+  <link rel="icon" href="https://cdn.glitch.global/5688a322-5518-415d-9ba8-a0a61fb2fb96/Cozzies%20Logo.png?v=174403593285966" type="image/jpeg">
+  
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-database-compat.js"></script>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="participants/participants.css" />
+</head>
+<body>
+  <h2 id="title">Waiting for the Quiz Title to Load...</h2>
+  
+  <div id="pin-page" class="background">
+    <div class="center-card">
+      <img id="cozzies-logo" src="https://cdn.glitch.global/5688a322-5518-415d-9ba8-a0a61fb2fb96/Cozzies%20Logo.png?v=174403593285966" alt="Logo">
+      <input type="text" id="PINInput" placeholder="Game PIN" />
+      <input type="text" id="quizId" placeholder="Quiz No." />
+      <button id="pinBtn">Enter</button>
+    </div>
+  </div>
+  
+  <!-- Waiting/Login Page -->
+  <div id="waiting-page" class="waiting-room">
+    <h2 id="waiting-title">Waiting for the Host to Start...</h2>
+    <div id="login-container">
+      <h2>Enter your Username</h2>
+      <input type="text" id="usernameInput" placeholder="Enter your name..." />
+      <br />
+      <div id="avatar-selection">
+        <h3>Choose Your Avatar</h3>
+        <div id="avatar-grid" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+      </div>
+      <button id="joinQuizBtn">Join Quiz</button>
+    </div>
+    <div id="participant-list-container">
+      <h3>Participants:</h3>
+      <ul id="participant-list"></ul>
+    </div>
+  </div>
+  
+  <!-- Quiz Page -->
+  <div id="quiz-page" style="display: none">
+    <div class="quiz-container">
+      <div id="quiz-header">
+        <div class="progress-container">
+          <div id="progress-bar">
+            <div id="progress-fill"></div>
+          </div>
+        </div>
+        <div class="question-box">
+          <div class="question-header">Question #<span id="question-number">1</span></div>
+          <div id="question-title" class="question-text">Loading Question...</div>
+        </div>
+      </div>
+      <div id="answers-container" class="answers-container">
+        <!-- Answer options will be generated here -->
+      </div>
+      <div class="bottom-row">
+        <div id="timer-wrapper">
+          <svg id="timer-svg" width="60" height="60">
+            <circle cx="30" cy="30" r="28" stroke="#ccc" stroke-width="4" fill="none" />
+            <circle id="timer-progress" cx="30" cy="30" r="28" stroke="#2e86de" stroke-width="4" fill="none"
+              stroke-dasharray="176" stroke-dashoffset="0" transform="rotate(-90 30 30)" />
+          </svg>
+          <div id="timer-label">00:30</div>
+        </div>
+        <button id="submitBtn">Submit Answer</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Feedback Page -->
+  <div id="feedback-page" style="display: none">
+    <div id="feedbackContent"></div>
+    <div class="centeredBtn">
+      <button id="toTablesBtn" style="text-align: center; ">Next (Leaderboard)</button>
+    </div>
+    <footer style="text-align: center">
+      <p>Before viewing the leaderboard, view the answers of your friends and a detailed insight of the previous question.</p>
+    </footer>
+    <section id="questionInsights" style="display: none">
+      <h2>📊 Question Insights</h2>
+      <table id="insightTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Question</th>
+            <th>Correct</th>
+            <th>Explanation</th>
+            <th>✅ Right</th>
+            <th>❌ Wrong</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="recipients" style="display: none">
+      <h2>📥 Recipient Answers</h2>
+      <table id="recipientTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Question</th>
+            <th>Selected</th>
+            <th>Correct</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+  
+  <!-- Tables Page -->
+  <div id="tables-page" style="display: none">
+    <button id="nextQuestion">Next Question</button>
+    <div id="leaderboard-section" style="display: none">
+      <h3>🏆 Leaderboard</h3>
+      <table id="leaderboardTable">
+        <thead>
+          <tr>
+            <th>🏆 Rank</th>
+            <th>🧑‍🎓 Name</th>
+            <th>✅ Correct</th>
+            <th>📊 Total</th>
+            <th>🔥 Points</th>
+            <th>🎯 % Correct</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- ⬇️ Scroll to Bottom Button -->
+  <button id="scrollToBottomBtn" title="Scroll to bottom">
+    <svg width="24" height="24" viewbox="0 0 24 24" fill="none">
+      <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  
+  <!-- JS -->
+  <script src="participants/participants.js" defer></script>
+</body>
+</html>
