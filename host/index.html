@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz Control Panel</title>
+  <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-database-compat.js"></script>
+  
+  <!-- XLSX (must be before your script.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <link rel="stylesheet" href="host/host.css" />
+</head>
+<body>
+  <script src="host/script.js"></script>
+  
+  <h1 id="pin">PIN: 6901</h1>
+  <h1>Quiz Control Panel</h1>
+
+  <section id="editor">
+    <button id="nextQuestionAutoBtn">⏭️ Enable Next Question By Participants</button>
+    <h2>Edit Quiz Title</h2>
+    <label>Quiz Title: <input type="text" id="Qtitle" /></label><br />
+    <h2>Edit Questions</h2>
+    <label>Quiz ID: <input type="text" id="quizId" /></label><br />
+    <label>Question ID: <input type="text" id="qId" /></label><br />
+    <label>Question: <br /><textarea id="questionText"></textarea></label><br />
+    <label>Answers:</label><br />
+    <input type="text" id="answerA" placeholder="Answer A" />
+    <input type="text" id="answerB" placeholder="Answer B" />
+    <input type="text" id="answerC" placeholder="Answer C" />
+    <input type="text" id="answerD" placeholder="Answer D" /><br />
+    <label>Correct Answer(s): <input type="text" id="correct" /></label><br />
+    <label>Explanation: <br /><textarea id="explanation"></textarea></label><br />
+    <label>Timer (seconds): <input type="number" id="timer" min="5" max="1800" value="30" /></label><br />
+    <button onclick="saveQuestion()">💾 Save Question</button>
+    <button id="nextQuestionBtn">⏭️ Next Question</button>
+    <button onclick="resetQuiz()">Reset Quiz</button>
+    <button id="startStop" >Start Quiz</button>
+    <button onclick="importQuiz()">📥 Import Quiz (Excel)</button>
+  </section>
+
+  <section id="recipients">
+    <h2>Recipient Answers</h2>
+    <button onclick="clearRecipients()">🧹 Clear All</button>
+    <table id="recipientTable">
+      <thead>
+        <tr><th>Name</th><th>Question</th><th>Selected</th><th>Correct</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+  <section id="leaderboard">
+    <h2>🏆 Leaderboard</h2>
+    <table id="leaderboardTable">
+      <thead>
+        <tr><th>Rank</th><th>Name</th><th>Correct</th><th>Total</th><th>%</th><th>Points</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section id="questionInsights">
+    <h2>📊 Question Insights</h2>
+    <table id="insightTable">
+      <thead>
+        <tr>
+          <th>#</th><th>Question</th><th>Correct</th><th>Explanation</th>
+          <th>✅ Right</th><th>❌ Wrong</th><th>Answer Options</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+</body>
+</html>
