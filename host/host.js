@@ -16,7 +16,6 @@ let db;
 document.addEventListener("DOMContentLoaded", () => {
   let participantAllowNext = true;
   let pin = Math.floor(Math.random() * 10000).toString().padStart(4, "0");
-  pin = "8936";
   document.getElementById("pin").innerHTML = `PIN: <strong>${pin}</strong>`;
   db = firebase.database().ref(pin).child("1");
   
