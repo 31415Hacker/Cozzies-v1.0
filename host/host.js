@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function resetQuiz() {
-  db.child("state/currentQuestionIndex").set(quizRunning ? 0 : -1);
+  db.child("state/currentQuestionIndex").set(0);
 }
 
 function startQuiz() {
