@@ -3,14 +3,14 @@ const accessKey = "1S2e3c4r5e6t7P8a9s0s-w=o1r2d3"; // 👈 match this with the o
 
 // Firebase Configuration (same as host)
 const firebaseConfig = {
-  apiKey: "AIzaSyAJeDO4hO0AmQV0vfEowKLQ7_zyA9cpi1A",
-  authDomain: "weekly-islamic-quiz.firebaseapp.com",
-  databaseURL: "https://weekly-islamic-quiz-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "weekly-islamic-quiz",
-  storageBucket: "weekly-islamic-quiz.appspot.com",
-  messagingSenderId: "1025690461878",
-  appId: "1:1025690461878:web:d82dc0564c1ba65044e817",
-  measurementId: "G-E4L6RKE9XS"
+  apiKey: "AIzaSyDXOxTQFbb7wbP50zsf-iku01wT4SVv_18",
+  authDomain: "quiz-database-cb174.firebaseapp.com",
+  databaseURL: "https://quiz-database-cb174-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "quiz-database-cb174",
+  storageBucket: "quiz-database-cb174.firebasestorage.app",
+  messagingSenderId: "181782754946",
+  appId: "1:181782754946:web:1076aa4443b921b505669b",
+  measurementId: "G-CGZW7ZWE25"
 };
 
 let lastIndex = -1;
